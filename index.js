@@ -20,6 +20,11 @@ db.sequelize
     console.error("Error syncing database:", err);
   });
 
+// Health check endpoint
+app.get("/health", (req, res) => {
+  res.status(200).json({ status: "OK", message: "Server is running smoothly" });
+});
+
 app.use("/api", campaignRoutes);
 app.use("/api", redeemCodeRoutes);
 app.use("/api", generateCodeRoutes);
